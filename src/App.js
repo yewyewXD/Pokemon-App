@@ -20,17 +20,10 @@ function App() {
         cancelToken: axios.CancelToken((c) => (cancel = c)),
       })
       .then((res) => {
-        const pokemonNames = res.data.results.map((p) => p.name);
-        console.log(pokemonNames[0]);
         setLoading(false);
         setNextPageUrl(res.data.next);
         setPrevPageUrl(res.data.previous);
-        setPokemon(pokemonNames);
-        axios
-          .get(
-            `https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/pokedex.php?pokemon=${pokemonNames[0]}`
-          )
-          .then((res) => console.log(res.data));
+        setPokemon(res.data.results.map((p) => p.name));
       })
       .catch((err) => console.log(err));
 
