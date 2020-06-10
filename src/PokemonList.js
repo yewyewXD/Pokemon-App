@@ -6,10 +6,10 @@ export default function PokemonList({ pokemon }) {
       <div>
         {pokemon.map((p) => (
           <div key={p}>
-            {p}
+            <h1> {p} </h1>
             <img
               className="image"
-              src={`https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/images/${p}.jpg`}
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png`}
             />
           </div>
         ))}
