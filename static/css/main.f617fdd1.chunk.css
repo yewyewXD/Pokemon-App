@@ -1,0 +1,2 @@
+.App{min-height:100vh}.App h1,.App p{text-align:center;margin:5px}.pokemon{border-radius:10px;box-shadow:0 5px 20px grey;margin:20px;flex-direction:column;background:#d3d3d3;align-items:center;min-width:30%}.pokemon,.pokemons{display:flex;justify-content:space-around}.pokemons{flex-wrap:wrap}.buttons{margin-top:40px;display:flex;justify-content:space-around}.btn{padding:10px 20px;border-radius:5px}.btn:hover{cursor:pointer;transform:scale(.95)}
+/*# sourceMappingURL=main.f617fdd1.chunk.css.map */
