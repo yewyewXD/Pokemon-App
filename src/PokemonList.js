@@ -5,13 +5,16 @@ export default function PokemonList({ pokemon }) {
     <>
       <div>
         {pokemon.map((p) => (
-          <div key={p}>
-            <h1> {p} </h1>
+          <>
+            <h1 key={p.name}>{p.name}</h1>
             <img
-              className="image"
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png`}
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+                p.url.match(/\d+/g)[1]
+              }.png`}
+              key={p.url}
+              alt={p.url}
             />
-          </div>
+          </>
         ))}
       </div>
     </>
