@@ -1,0 +1,38 @@
+.App {
+  min-height: 100vh;
+}
+
+.App h1,
+.App p {
+  text-align: center;
+  margin: 5px;
+}
+
+.pokemon {
+  border-radius: 10px;
+  box-shadow: 0px 5px 20px grey;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: lightgrey;
+  align-items: center;
+  min-width: 30%;
+}
+
+.pokemons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+}
