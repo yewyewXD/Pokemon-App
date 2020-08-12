@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import PokemonPage from "./pages/PokemonPage";
 import SearchPage from "./pages/SearchPage";
 

@@ -2,27 +2,26 @@
   font-family: "Lato", sans-serif !important;
   font-weight: 400;
 }
-
 body {
   overflow-x: hidden;
 }
-
 .pokemon {
   min-width: 16%;
   height: 50%;
+  transition: 0.1s;
+  cursor: pointer;
 }
-
+.pokemon:hover {
+  transform: scale(1.2);
+  box-shadow: grey 0 0 5px;
+}
 h1 {
   font-size: 3.5vw;
   font-weight: 700;
 }
-
 p,
 h5 {
   margin: 0 !important;
   font-size: 1.6vw;
-}
-
-h5 {
   font-weight: 300;
 }

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PokemonList from "../components/PokemonList";
 import Pagination from "../components/Pagination";
-import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default function PokemonPage() {
@@ -46,24 +45,28 @@ export default function PokemonPage() {
     return () => cancel();
   }, [currentPageUrl]);
 
-  if (loading) return "Loading...";
+  // if (loading) return "Loading ...";
 
   return (
-    <div className="text-center pt-5 bg-light">
+    <div className="text-center bg-light">
       <Navbar currentPage="All" />
       <h1>All Pokemon</h1>
       <Pagination
         gotoNextPage={nextPageUrl ? gotoNextPage : null}
         gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
       />
-      <PokemonList pokemons={pokemons} />
-      <Pagination
-        gotoNextPage={nextPageUrl ? gotoNextPage : null}
-        gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
-      />
-      <footer className="py-4 all-center">
-        Pokedex App @ {new Date().getFullYear()} by yewyewXD
-      </footer>
+      {!loading && (
+        <>
+          <PokemonList pokemons={pokemons} />
+          <Pagination
+            gotoNextPage={nextPageUrl ? gotoNextPage : null}
+            gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+          />
+          <footer className="py-4 all-center">
+            Pokedex App @ {new Date().getFullYear()} by yewyewXD
+          </footer>
+        </>
+      )}
     </div>
   );
 }
