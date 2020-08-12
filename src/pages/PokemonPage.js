@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PokemonList from "../components/PokemonList";
 import Pagination from "../components/Pagination";
+import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 export default function PokemonPage() {
   const [pokemons, setPokemons] = useState([]);
@@ -48,8 +50,8 @@ export default function PokemonPage() {
 
   return (
     <div className="text-center pt-5 bg-light">
+      <Navbar currentPage="All" />
       <h1>All Pokemon</h1>
-      <p>created by yewyewXD</p>
       <Pagination
         gotoNextPage={nextPageUrl ? gotoNextPage : null}
         gotoPrevPage={prevPageUrl ? gotoPrevPage : null}

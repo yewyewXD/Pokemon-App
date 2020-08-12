@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 
 export default function SearchPage() {
   const [pokemonNames, setPokemonNames] = useState([]);
@@ -26,6 +27,7 @@ export default function SearchPage() {
 
   return (
     <div>
+      <Navbar currentPage="Search" />
       <input type="search" list="pokemonNames" ref={searchElRef} />
       <button onClick={handleSearch}>Search</button>
       <datalist id="pokemonNames">
