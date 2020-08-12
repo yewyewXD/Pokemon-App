@@ -47,14 +47,21 @@ export default function PokemonPage() {
   if (loading) return "Loading...";
 
   return (
-    <div className="App">
+    <div className="text-center pt-5 bg-light">
       <h1>All Pokemon</h1>
       <p>created by yewyewXD</p>
+      <Pagination
+        gotoNextPage={nextPageUrl ? gotoNextPage : null}
+        gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+      />
       <PokemonList pokemons={pokemons} />
       <Pagination
         gotoNextPage={nextPageUrl ? gotoNextPage : null}
         gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
       />
+      <footer className="py-4 all-center">
+        Pokedex App @ {new Date().getFullYear()} by yewyewXD
+      </footer>
     </div>
   );
 }

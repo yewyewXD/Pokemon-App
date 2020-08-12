@@ -1,43 +1,28 @@
-.App {
-  min-height: 100vh;
+* {
+  font-family: "Lato", sans-serif !important;
+  font-weight: 400;
 }
 
-.App h1,
-.App p {
-  text-align: center;
-  margin: 5px;
+body {
+  overflow-x: hidden;
 }
 
 .pokemon {
-  border-radius: 10px;
-  box-shadow: 0px 5px 20px grey;
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background: lightgrey;
-  align-items: center;
-  min-width: 30%;
+  min-width: 16%;
+  height: 50%;
 }
 
-.pokemons {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+h1 {
+  font-size: 3.5vw;
+  font-weight: 700;
 }
 
-.buttons {
-  margin-top: 40px;
-  display: flex;
-  justify-content: space-around;
+p,
+h5 {
+  margin: 0 !important;
+  font-size: 1.6vw;
 }
 
-.btn {
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-.btn:hover {
-  cursor: pointer;
-  transform: scale(0.95);
+h5 {
+  font-weight: 300;
 }
