@@ -5,7 +5,7 @@ import axios from "axios";
 import "./app.css";
 
 function App() {
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemons, setPokemons] = useState([]);
   const [currentPageUrl, setCurrentPageUrl] = useState(
     "https://pokeapi.co/api/v2/pokemon/"
   );
@@ -21,10 +21,13 @@ function App() {
         cancelToken: axios.CancelToken((c) => (cancel = c)),
       })
       .then((res) => {
+        const pokemonList = res.data.results;
+        const pokemonCount = res.data.count;
         setLoading(false);
         setNextPageUrl(res.data.next);
         setPrevPageUrl(res.data.previous);
-        setPokemon(res.data.results);
+        setPokemons(pokemonList);
+        // console.log(res);
       })
       .catch((err) => console.log(err));
 
@@ -46,7 +49,7 @@ function App() {
     <div className="App">
       <h1>All Pokemon</h1>
       <p>created by yewyewXD</p>
-      <PokemonList pokemon={pokemon} />
+      <PokemonList pokemons={pokemons} />
       <Pagination
         gotoNextPage={nextPageUrl ? gotoNextPage : null}
         gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
