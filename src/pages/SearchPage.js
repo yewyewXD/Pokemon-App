@@ -4,14 +4,33 @@ import Navbar from "../components/Navbar";
 
 export default function SearchPage() {
   const [pokemonNames, setPokemonNames] = useState([]);
+  const [pokemonData, setPokemonData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadingPokemon, setLoadingPokemon] = useState(true);
   const searchElRef = useRef();
 
   function handleSearch() {
     const search = searchElRef.current.value;
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${search}`)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        const newData = [
+          {
+            id: res.data.id,
+            name: res.data.name,
+            types: res.data.types.map((type) => type.type.name),
+            abilities: res.data.abilities.map(
+              (ability) => ability.ability.name
+            ),
+            image: res.data.sprites.front_default,
+          },
+        ];
+        setPokemonData(newData);
+        console.log(newData);
+        setLoadingPokemon(false);
+        document.getElementById("searchBar").value = "";
+        return newData;
+      })
       .catch((err) => console.log(err));
   }
 
@@ -37,6 +56,7 @@ export default function SearchPage() {
       <div className="form-row w-100 m-0 d-flex justify-content-center mt-4">
         <div className="col-2">
           <input
+            id="searchBar"
             type="search"
             list="pokemonNames"
             className="form-control"
@@ -58,6 +78,18 @@ export default function SearchPage() {
         ))}
       </datalist>
       {/* Datalist end */}
+
+      {!loadingPokemon &&
+        pokemonData.map((pokemon) => (
+          <div className="pokemon-profile mt-5 col-6 mx-auto" key={pokemon.id}>
+            <img src={pokemon.image} alt="" />
+            <p className="w-100">Name: {pokemon.name}</p>
+            Abilities:
+            {pokemon.abilities.map((ability, index) => (
+              <p key={index}>{ability}</p>
+            ))}
+          </div>
+        ))}
     </div>
   );
 }
