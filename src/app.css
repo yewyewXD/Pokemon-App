@@ -2,6 +2,11 @@
   font-family: "Lato", sans-serif !important;
   font-weight: 400;
 }
+.all-center {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
 body {
   overflow-x: hidden;
 }
@@ -27,4 +32,5 @@ h5 {
 }
 p {
   font-weight: 400;
+  font-size: 1.3vw;
 }

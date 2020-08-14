@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import Pokemon from "../components/Pokemon";
 
 export default function SearchPage() {
   const [pokemonNames, setPokemonNames] = useState([]);
@@ -22,9 +23,12 @@ export default function SearchPage() {
             abilities: res.data.abilities.map(
               (ability) => ability.ability.name
             ),
-            image: res.data.sprites.front_default,
+            imageFront: res.data.sprites.front_default,
+            imageBack: res.data.sprites.back_default,
+            moves: res.data.moves.map((move) => move.move.name),
           },
         ];
+        console.log(res.data);
         setPokemonData(newData);
         console.log(newData);
         setLoadingPokemon(false);
@@ -71,25 +75,15 @@ export default function SearchPage() {
         </button>
       </div>
 
-      {/* Datalist start */}
+      {/* Datalist*/}
       <datalist id="pokemonNames">
         {pokemonNames.map((pokemonName) => (
           <option value={pokemonName} key={pokemonName} />
         ))}
       </datalist>
-      {/* Datalist end */}
 
-      {!loadingPokemon &&
-        pokemonData.map((pokemon) => (
-          <div className="pokemon-profile mt-5 col-6 mx-auto" key={pokemon.id}>
-            <img src={pokemon.image} alt="" />
-            <p className="w-100">Name: {pokemon.name}</p>
-            Abilities:
-            {pokemon.abilities.map((ability, index) => (
-              <p key={index}>{ability}</p>
-            ))}
-          </div>
-        ))}
+      {/* Pokemon Profile */}
+      {!loadingPokemon && <Pokemon pokemonData={pokemonData} />}
     </div>
   );
 }
