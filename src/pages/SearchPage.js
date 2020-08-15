@@ -1,19 +1,24 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import axios from "axios";
+
 import Navbar from "../components/Navbar";
 import Pokemon from "../components/Pokemon";
+import NameContext from "../context/name-context";
 
 export default function SearchPage() {
   const [pokemonNames, setPokemonNames] = useState([]);
   const [pokemonData, setPokemonData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadingPokemon, setLoadingPokemon] = useState(true);
+  const [contextName, setContextName] = useState(null);
   const searchElRef = useRef();
+  const contextType = useContext(NameContext);
 
-  function handleSearch() {
-    const search = searchElRef.current.value;
+  function handleSearch(name) {
+    const query = searchElRef.current ? searchElRef.current.value : name;
+
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${search}`)
+      .get(`https://pokeapi.co/api/v2/pokemon/${query}`)
       .then((res) => {
         const newData = [
           {
@@ -30,7 +35,6 @@ export default function SearchPage() {
         ];
         console.log(res.data);
         setPokemonData(newData);
-        console.log(newData);
         setLoadingPokemon(false);
         document.getElementById("searchBar").value = "";
         return newData;
@@ -39,6 +43,12 @@ export default function SearchPage() {
   }
 
   useEffect(() => {
+    const contextName = contextType.pokemonName;
+    if (contextName) {
+      console.log(contextName);
+      handleSearch(contextName);
+      contextType.setName(null);
+    }
     // get all pokemon names
     axios
       .get("https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0")
