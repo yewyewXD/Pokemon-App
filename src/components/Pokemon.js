@@ -15,10 +15,12 @@ export default function Pokemon({ pokemonData }) {
           <div className="pokemon-profile-detail">
             <h5>Name:</h5>
             <p>{pokemon.name}</p>
+            <br />
             <h5>Abilities:</h5>
             {pokemon.abilities.map((ability, index) => (
               <p key={index}>{ability}</p>
             ))}
+            <br />
             <h5>Moves:</h5>
             {pokemon.moves.map((move, index) => (
               <p key={index}>{move}</p>

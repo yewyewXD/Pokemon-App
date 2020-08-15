@@ -50,7 +50,7 @@ export default function PokemonPage() {
   return (
     <div className="text-center bg-light">
       <Navbar currentPage="All" />
-      <h1>All Pokemon</h1>
+      <h1>All Pokémon</h1>
       <Pagination
         gotoNextPage={nextPageUrl ? gotoNextPage : null}
         gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
