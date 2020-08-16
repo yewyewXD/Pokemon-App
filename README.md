@@ -1,6 +1,6 @@
 # Pokédex App
 
-## Project Title
+## Description
 A pokemon profile database and search engine built with React
 
 ## Motivation
@@ -26,7 +26,7 @@ All pokemon is included.
 > Install the dependencies
 ```bash
 npm i
----
+```
 
 > Run the app
 ```bash
@@ -34,7 +34,7 @@ npm start
 ```
 
 ## API Reference
-[Poké API!](https://pokeapi.co/)
+[Poké API](https://pokeapi.co/)
 
 ## Credits
-Inspiration: [Web Dev Simplified!](https://www.youtube.com/watch?v=o3ZUc7zH8BE)
+Inspiration: [Web Dev Simplified](https://www.youtube.com/watch?v=o3ZUc7zH8BE)
