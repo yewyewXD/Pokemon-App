@@ -14,7 +14,7 @@ Modified on: 15 Aug 2020 <br>
 
 
 ## Screenshots
-![Pokémon Page](https://github.com/yewyewXD/Pokemon-App/blob/master/readme-images/pokemonPage.png?raw=true "Pokémon Page")
+![Pokémon Page](https://github.com/yewyewXD/Pokemon-App/blob/master/readme-images/pokemonPage.png?raw=true "Pokémon Page") <br>
 ![Search Page](https://github.com/yewyewXD/Pokemon-App/blob/master/readme-images/searchPage.png?raw=true "Search Page")
 
 ## Tech/framework used
