@@ -1,13 +1,14 @@
 export default (state, action) => {
   switch (action.type) {
     case "GET_POKEMON_NAMES":
-      const pokemonNames = action.payload.map((result) => result.name);
-      pokemonNames.sort((a, b) => a.localeCompare(b));
       return {
         ...state,
         pokemonNamesLoading: false,
-        pokemonNames: pokemonNames,
+        pokemonNames: action.payload
+          .map((result) => result.name)
+          .sort((a, b) => a.localeCompare(b)),
       };
+
     case "SEARCH_POKEMON":
       return {
         ...state,
