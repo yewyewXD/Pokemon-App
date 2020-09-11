@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
 export default function Pokemon() {
-  const { pokemonLoading, pokemon: pokemonData } = useContext(GlobalContext);
+  const { pokemonLoading, pokemons } = useContext(GlobalContext);
 
   if (pokemonLoading) {
     return <div>waiting for search</div>;
@@ -10,7 +10,7 @@ export default function Pokemon() {
 
   return (
     <>
-      {pokemonData.map((pokemon) => (
+      {pokemons.map((pokemon) => (
         <div
           className="pokemon-profile all-center flex-column mt-5 py-5"
           key={pokemon.id}

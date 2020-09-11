@@ -5,7 +5,7 @@ import axios from "axios";
 // Initial state
 const initialState = {
   pokemonNames: null,
-  pokemon: null,
+  pokemons: [],
   error: null,
   pokemonNamesLoading: true,
   pokemonLoading: true,
@@ -52,6 +52,13 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
+  function clearPokemons() {
+    dispatch({
+      type: "CLEAR_POKEMONS",
+      payload: null,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -59,9 +66,10 @@ export const GlobalProvider = ({ children }) => {
         error: state.error,
         pokemonNamesLoading: state.pokemonNamesLoading,
         pokemonLoading: state.pokemonLoading,
-        pokemon: state.pokemon,
+        pokemons: state.pokemons,
         getPokemonNames,
         searchPokemon,
+        clearPokemons,
       }}
     >
       {children}

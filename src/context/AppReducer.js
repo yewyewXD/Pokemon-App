@@ -13,7 +13,8 @@ export default (state, action) => {
       return {
         ...state,
         pokemonLoading: false,
-        pokemon: [
+        pokemons: [
+          ...state.pokemons,
           {
             id: action.payload.id,
             name: action.payload.name,
@@ -26,6 +27,13 @@ export default (state, action) => {
             // moves: action.payload.moves.map((move) => move.move.name),
           },
         ],
+      };
+
+    case "CLEAR_POKEMONS":
+      return {
+        ...state,
+        pokemonLoading: true,
+        pokemons: [],
       };
 
     case "SEARCH_ERROR":

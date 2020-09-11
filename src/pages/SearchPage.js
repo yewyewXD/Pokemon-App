@@ -10,6 +10,7 @@ export default function SearchPage() {
     getPokemonNames,
     pokemonNames,
     pokemonNamesLoading,
+    clearPokemons,
   } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -18,9 +19,17 @@ export default function SearchPage() {
   }, []);
 
   function handleSearch() {
-    const name = nameElRef.current.value;
-    searchPokemon(name);
-    document.getElementById("searchBar").value = "";
+    clearPokemons();
+    if (!pokemonNamesLoading) {
+      const name = nameElRef.current.value;
+      const newPokemonNames = pokemonNames.filter(
+        (pokemonName) => pokemonName.indexOf(name) !== -1
+      );
+      newPokemonNames.forEach((name) => {
+        searchPokemon(name);
+      });
+      document.getElementById("searchBar").value = "";
+    }
   }
 
   if (pokemonNamesLoading) {

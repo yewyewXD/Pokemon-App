@@ -32,7 +32,6 @@ export default function PokemonPage() {
       })
       .then((res) => {
         const pokemonList = res.data.results;
-        const pokemonCount = res.data.count;
         setNextPageUrl(res.data.next);
         setPrevPageUrl(res.data.previous);
         setPokemons(pokemonList);
