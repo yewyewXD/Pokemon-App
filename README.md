@@ -12,13 +12,14 @@ This web app was first built on 15 Jun 2020. At that time, I barely knew React a
 
 ### Success
 
-Started on 10 Jun 2020 <br>
-Completed on 15 Jun 2020 <br>
-Modified on 11 Sep 2020 <br>
+Started on: 10 Jun 2020 <br>
+Completed on: 15 Jun 2020 <br>
+Last Modified on: 19 Sep 2020 <br>
 
 ## Screenshots
 
-will be added soon
+![Pokémon Page](https://github.com/yewyewXD/Pokemon-App/blob/master/readme-images/pokemonPage.png?raw=true "Pokémon Page") <br>
+![Search Page](https://github.com/yewyewXD/Pokemon-App/blob/master/readme-images/searchPage.png?raw=true "Search Page")
 
 ## Tech/framework used
 
