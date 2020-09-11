@@ -25,7 +25,7 @@ export default function PokemonPage() {
     setLoading(true);
     let cancel;
 
-    // get all pokemon
+    // get all pokemon data
     axios
       .get(currentPageUrl, {
         cancelToken: axios.CancelToken((c) => (cancel = c)),

@@ -1,67 +1,31 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
-import axios from "axios";
-
+import React, { useEffect, useRef, useContext } from "react";
 import Navbar from "../components/Navbar";
 import Pokemon from "../components/Pokemon";
-import NameContext from "../context/name-context";
+import { GlobalContext } from "../context/GlobalState";
 
 export default function SearchPage() {
-  const [pokemonNames, setPokemonNames] = useState([]);
-  const [pokemonData, setPokemonData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadingPokemon, setLoadingPokemon] = useState(true);
-  const [contextName, setContextName] = useState(null);
-  const searchElRef = useRef();
-  const contextType = useContext(NameContext);
-
-  function handleSearch(name) {
-    const query = searchElRef.current ? searchElRef.current.value : name;
-
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${query}`)
-      .then((res) => {
-        const newData = [
-          {
-            id: res.data.id,
-            name: res.data.name,
-            types: res.data.types.map((type) => type.type.name),
-            abilities: res.data.abilities.map(
-              (ability) => ability.ability.name
-            ),
-            imageFront: res.data.sprites.front_default,
-            imageBack: res.data.sprites.back_default,
-            moves: res.data.moves.map((move) => move.move.name),
-          },
-        ];
-        console.log(res.data);
-        setPokemonData(newData);
-        setLoadingPokemon(false);
-        document.getElementById("searchBar").value = "";
-        return newData;
-      })
-      .catch((err) => console.log(err));
-  }
+  const nameElRef = useRef();
+  const {
+    searchPokemon,
+    getPokemonNames,
+    pokemonNames,
+    pokemonNamesLoading,
+  } = useContext(GlobalContext);
 
   useEffect(() => {
-    const contextName = contextType.pokemonName;
-    if (contextName) {
-      console.log(contextName);
-      handleSearch(contextName);
-      contextType.setName(null);
-    }
     // get all pokemon names
-    axios
-      .get("https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0")
-      .then((res) => {
-        const pokemonNameList = res.data.results.map((result) => result.name);
-        pokemonNameList.sort((a, b) => a.localeCompare(b));
-        setPokemonNames(pokemonNameList);
-        setIsLoading(false);
-      })
-      .catch((err) => console.log(err));
+    getPokemonNames();
   }, []);
 
-  if (isLoading) return <h1>Loading</h1>;
+  function handleSearch() {
+    const name = nameElRef.current.value;
+    searchPokemon(name);
+    document.getElementById("searchBar").value = "";
+  }
+
+  if (pokemonNamesLoading) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className="search-page text-center">
@@ -74,7 +38,7 @@ export default function SearchPage() {
             type="search"
             list="pokemonNames"
             className="form-control"
-            ref={searchElRef}
+            ref={nameElRef}
           />
         </div>
         <button
@@ -93,7 +57,7 @@ export default function SearchPage() {
       </datalist>
 
       {/* Pokemon Profile */}
-      {!loadingPokemon && <Pokemon pokemonData={pokemonData} />}
+      <Pokemon />
     </div>
   );
 }

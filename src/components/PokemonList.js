@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
-import NameContext from "../context/name-context";
+import { GlobalContext } from "../context/GlobalState";
 
 export default function PokemonList({ pokemons }) {
   const history = useHistory();
-  const contextType = useContext(NameContext);
+  const { searchPokemon } = useContext(GlobalContext);
 
-  function handlePostName(name) {
-    contextType.setName(name);
+  function searchPokemonByName(name) {
+    searchPokemon(name);
     history.push("/search");
   }
 
@@ -20,7 +20,7 @@ export default function PokemonList({ pokemons }) {
             className="pokemon card m-sm-5 m-1"
             key={pokemon.name}
             onClick={() => {
-              handlePostName(pokemon.name);
+              searchPokemonByName(pokemon.name);
             }}
           >
             <img
@@ -28,14 +28,11 @@ export default function PokemonList({ pokemons }) {
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
                 pokemon.url.match(/\d+/g)[1]
               }.png`}
-              alt="pokemon.url"
+              alt={pokemon.url}
             />
 
             <div className="pokemon-name card-body border-top text-center">
               <h5 className="card-title text-capitalize m-0">{pokemon.name}</h5>
-              {/* <Link to="/" className="btn btn-primary">
-              See Detail
-            </Link> */}
             </div>
           </div>
         ))}

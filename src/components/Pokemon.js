@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
 
-export default function Pokemon({ pokemonData }) {
+export default function Pokemon() {
+  const { pokemonLoading, pokemon: pokemonData } = useContext(GlobalContext);
+
+  if (pokemonLoading) {
+    return <div>waiting for search</div>;
+  }
+
   return (
     <>
       {pokemonData.map((pokemon) => (
@@ -19,11 +26,6 @@ export default function Pokemon({ pokemonData }) {
             <h5>Abilities:</h5>
             {pokemon.abilities.map((ability, index) => (
               <p key={index}>{ability}</p>
-            ))}
-            <br />
-            <h5>Moves:</h5>
-            {pokemon.moves.map((move, index) => (
-              <p key={index}>{move}</p>
             ))}
           </div>
         </div>
