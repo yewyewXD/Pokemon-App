@@ -14,7 +14,7 @@ This web app was first built on 15 Jun 2020. At that time, I barely knew React a
 
 Started on: 10 Jun 2020 <br>
 Completed on: 15 Jun 2020 <br>
-Last Modified on: 19 Sep 2020 <br>
+Last Modified on: 12 Sep 2020 <br>
 
 ## Screenshots
 
