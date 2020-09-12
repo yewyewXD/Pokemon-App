@@ -4,7 +4,7 @@ export default (state, action) => {
       return {
         ...state,
         pokemonNamesLoading: false,
-        pokemonNames: action.payload
+        pokemonNames: action.payload.results
           .map((result) => result.name)
           .sort((a, b) => a.localeCompare(b)),
       };
@@ -16,7 +16,7 @@ export default (state, action) => {
         pokemons: [
           ...state.pokemons,
           {
-            id: action.payload.id,
+            id: action.payload.order,
             name: action.payload.name,
             types: action.payload.types.map((type) => type.type.name),
             abilities: action.payload.abilities.map(

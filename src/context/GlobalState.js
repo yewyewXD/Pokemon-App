@@ -20,11 +20,11 @@ export const GlobalProvider = ({ children }) => {
   async function getPokemonNames() {
     try {
       const res = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0"
+        "https://pokeapi.co/api/v2/pokemon?limit=1050&offset=0"
       );
       dispatch({
         type: "GET_POKEMON_NAMES",
-        payload: res.data.results,
+        payload: res.data,
       });
     } catch (err) {
       console.log(err);

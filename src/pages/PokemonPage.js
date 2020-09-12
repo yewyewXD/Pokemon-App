@@ -36,7 +36,7 @@ export default function PokemonPage() {
         setPrevPageUrl(res.data.previous);
         setPokemons(pokemonList);
         setLoading(false);
-        // console.log(res);
+        console.log(res.data);
       })
       .catch((err) => console.log(err));
 
