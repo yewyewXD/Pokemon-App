@@ -2,7 +2,9 @@ import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import PokemonPage from "./pages/PokemonPage";
 import SearchPage from "./pages/SearchPage";
+import "bootstrap/dist/css/bootstrap.css";
 import { GlobalProvider } from "./context/GlobalState";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
           <Redirect from="/Pokemon-App" to="/" exact />
           <Route path="/" component={PokemonPage} exact />
           <Route path="/search" component={SearchPage} />
+          <Route path="/landing" component={LandingPage} />
         </Switch>
       </GlobalProvider>
     </BrowserRouter>
