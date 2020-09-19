@@ -7,6 +7,9 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  .slide-overlay {
+    background: rgba(0, 0, 0, 0.6);
+  }
   &.slide1 {
     background-image: url("../images/pikachu-hero-bg.jpg");
   }

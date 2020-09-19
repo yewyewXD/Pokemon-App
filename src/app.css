@@ -34,3 +34,10 @@ p {
   font-weight: 400;
   font-size: 1.3vw;
 }
+
+/*Global*/
+.all-center {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
