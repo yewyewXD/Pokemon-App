@@ -16,6 +16,8 @@ export default function SearchPage() {
   useEffect(() => {
     // get all pokemon names
     getPokemonNames();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleSearch() {
